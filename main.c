@@ -31,14 +31,16 @@ void myJoyHandler( u16 joy, u16 changed, u16 state)
 
 		}
 		else if (changed & BUTTON_DOWN)
-		{VDP_clearText(12, ypos-1, 5);}
+		{VDP_clearText(12, ypos-1, 5);
+		VDP_clearText(12, ypos+1, 5);}
 		if (state & BUTTON_UP)
 		{
 			VDP_drawText(">", 14, ypos-1);
 			ypos=ypos-1;
 		}
 			else if (changed & BUTTON_UP)
-			{VDP_clearText(12, ypos+1, 5);}
+			{VDP_clearText(12, ypos+1, 5);
+			VDP_clearText(12, ypos-1, 5);}
 		}
 
 //	if (joy != JOY_1)
@@ -83,6 +85,14 @@ int main()
 					VDP_drawText("Options",15,20);
 					VDP_drawText("Exit",15,21);
 					VDP_drawText("1995 ZUNSoft, 2017 Spaztron64", 5, 26);
+					if (ypos<18)
+					{
+						ypos=ypos+1;
+					}
+					if (ypos>21)
+					{
+						ypos=ypos-1;
+					}
 
 
 		//wait for screen refresh
