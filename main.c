@@ -22,35 +22,38 @@ void myJoyHandler( u16 joy, u16 changed, u16 state)
 		}
 		else if (changed & BUTTON_START)
 		{
-			VDP_drawText("player 1 released START button", 0, 0);
+			VDP_clearTextBG(PLAN_A, 0, 0, 50);
 		}
 		if (state & BUTTON_DOWN)
 		{
 			VDP_drawText(">", 14, ypos+1);
 			ypos=ypos+1;
+
 		}
+		else if (changed & BUTTON_DOWN)
+		{VDP_clearText(12, ypos-1, 5);}
 		if (state & BUTTON_UP)
 		{
 			VDP_drawText(">", 14, ypos-1);
 			ypos=ypos-1;
 		}
-	}
+			else if (changed & BUTTON_UP)
+			{VDP_clearText(12, ypos+1, 5);}
+		}
+
 //	if (joy != JOY_1)
 //		{
 //			VDP_drawText(">", 14, ypos);
 //		}
 }
 
-void poslimit()
-{
-	if (ypos < 18)
-	{
-		ypos=18;
-	}
-	if (ypos > 21)
-	{
-		ypos=21;
-	}
+void screen()
+{//read input
+		//move sprite
+		//update score
+		//draw current screen (logo, start screen, settings, game, gameover, credits...)
+		VDP_drawBitmap(PLAN_B, &logo, 0, 0);
+
 }
 
 static void handleInput()
@@ -69,23 +72,17 @@ int main()
 {
 	JOY_init();
 	JOY_setEventHandler( &myJoyHandler );
+	screen();
 
 	while(1)
 	{
-		//read input
-		//move sprite
-		//update score
-		//draw current screen (logo, start screen, settings, game, gameover, credits...)
-		VDP_drawBitmap(PLAN_A, &logo, 0, 0);
-			//VDP_drawText("Highly responsive to prayers", 5, 6);
-			VDP_drawText(">", 14, ypos);
-			VDP_drawText("Start", 15, 18);
-			VDP_drawText("Continue", 15, 19);
-			VDP_drawText("Options",15,20);
-			VDP_drawText("Exit",15,21);
-			VDP_drawText("1995 ZUNSoft, 2017 Spaztron64", 5, 26);
-
-
+		//VDP_drawText("Highly responsive to prayers", 5, 6);
+					VDP_drawText(">", 14, ypos);
+					VDP_drawText("Start", 15, 18);
+					VDP_drawText("Continue", 15, 19);
+					VDP_drawText("Options",15,20);
+					VDP_drawText("Exit",15,21);
+					VDP_drawText("1995 ZUNSoft, 2017 Spaztron64", 5, 26);
 
 
 		//wait for screen refresh
