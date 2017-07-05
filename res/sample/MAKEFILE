@@ -1,0 +1,46 @@
+.SUFFIXES : .asm .x .o .c .s
+
+CC=..\bin\hcc
+TOP=..\bin\top
+AS=..\bin\jas
+LD=..\bin\segald
+MAC=..\bin\maccer
+RM=del
+INC= -I..\\include\\
+
+
+all     : swim
+
+swim: sega.o swim.o back.o tree.o swimmer.o unpack.o
+	@-echo "Linking the stuff"
+	$(LD) -g -v -o b2t_swimmer.bin -f objet.inc
+
+.asm.o:
+	@-echo "Calling Maccer"
+	$(MAC) -o $*.s $*.asm -tjas 
+	$(AS) $*.s
+	
+.c.o: 
+	@-echo "Making component -> $*.o"
+	$(CC) $(INC) $<
+	$(TOP) $*.s
+	$(AS) $*.s
+
+.s.o:
+	@-echo "Making component -> $*.o"
+	$(AS) $(CDIR)$*.s
+
+.PHONY: clean
+clean:
+	$(RM) *.o
+	$(RM) *.bin
+
+
+# dependencies -- DO NOT DELETE BELOW THIS LINE -- make depends on it.
+
+sega.o		: sega.asm
+swim.o		: swim.c
+back.o		: back.asm
+tree.o		: tree.asm
+swimmer.o	: swimmer.asm
+unpack.o	: unpack.s

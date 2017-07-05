@@ -1,0 +1,219 @@
+From: <Enregistré par Microsoft Internet Explorer 5>
+Subject: Bmp2Tile Sample : Swimmer
+Date: Thu, 21 Aug 2003 18:08:51 +0200
+MIME-Version: 1.0
+Content-Type: multipart/related;
+	boundary="----=_NextPart_000_0000_01C3680F.46889460";
+	type="text/html"
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
+
+This is a multi-part message in MIME format.
+
+------=_NextPart_000_0000_01C3680F.46889460
+Content-Type: text/html;
+	charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+Content-Location: file://E:\Dev_c\sega\bmp2Tile_ex\_doc\readme.htm
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>Bmp2Tile Sample : Swimmer</TITLE>
+<META http-equiv=3DContent-Type content=3D"text/html; =
+charset=3Diso-8859-1">
+<META content=3D"MSHTML 6.00.2600.0" name=3DGENERATOR></HEAD>
+<BODY text=3D#000000 bgColor=3D#ffffff>
+<P>This is how to make a sample demo based on Swimmer(c) Tehkan<BR>All =
+the gfx=20
+were ripped for the game under MAME and are copyright Tehkan<BR>I don't =
+use them=20
+for commercial use and give all the needed credit so i hope it's not =
+illegal=20
+</P>All the gfx are 16colors bmp and with the correct =
+background/transparent=20
+color (color 0)=20
+<P><B><FONT size=3D4>1/ Background</FONT></B></P><IMG=20
+src=3D"file:///E:/Dev_c/sega/bmp2Tile_ex/_doc/back.gif">=20
+<P>Our background is the full screen game without sprites<BR>As you can =
+see, for=20
+a 256x244 pic, it is full of the same tiles (full, full gray-green,=20
+boder..)<BR>Yes, you got it...we need an optimized map!<BR>So load the =
+pic under=20
+Bmp2Tile and<BR>- Save the palette (File &gt; Save Pal &gt; Asm)<BR>- =
+Select all=20
+(* key)<BR>- Save an optimized map...and, why not, compressed (File &gt; =
+Save=20
+Map &gt; Binary Optimized Compressed)<BR><BR>Et voil=E0! You have an =
+assembler=20
+file which include 2 binaries (1 for the map def and 1 for the =
+compressed tiles)=20
+and all the def needed (pal, size, number of tiles)=20
+<P><B><FONT size=3D4>2/ Tree</FONT></B></P><IMG=20
+src=3D"file:///E:/Dev_c/sega/bmp2Tile_ex/_doc/tree.gif">=20
+<P>Let's add a tree that we can put where we want on the screen<BR>So =
+load the=20
+pic under Bmp2Tile and<BR>- Save the palette (File &gt; Save Pal &gt; =
+Asm)<BR>-=20
+Select all ('*' key)<BR>- Resize the selector if you think the last line =
+isn't=20
+useful (i did it) ('g' key)<BR>- Save a compressed tile (File &gt; Save =
+Tile=20
+&gt; Binary Compressed)<BR>You have an assembler file which include a =
+binary and=20
+all the def needed=20
+<P><B><FONT size=3D4>3/ Swimmer</FONT></B></P><IMG alt=3D"Frame 0"=20
+src=3D"file:///E:/Dev_c/sega/bmp2Tile_ex/_doc/swimmer0.gif">&nbsp;&nbsp;<=
+IMG=20
+alt=3D"Frame 1" =
+src=3D"file:///E:/Dev_c/sega/bmp2Tile_ex/_doc/swimmer1.gif">=20
+<P>Now, convert our swimmer<BR>He has 2 frames : swimmer0 when no swim =
+and=20
+swimmer1 when he is swimming<BR>Load the pic of frame 0 under Bmp2Tile =
+and<BR>-=20
+Save the palette (File &gt; Save Pal &gt; Asm)<BR>- Select all ('*' =
+key)<BR>-=20
+Resize the selector to have a 2x4 sprites (i "forgot" to delete the last =
+column)=20
+('t' key)<BR>- Switch to Sprite mode (<B>VERY IMPORTANT</B>) (Options =
+&gt;=20
+Output mode &gt; Sprite)<BR>- Save a tile (File &gt; Save Tile &gt;=20
+Binary)<BR>Load the pic of frame 1 under Bmp2Tile and<BR>- Select all =
+('*'=20
+key)<BR>- Save a tile (File &gt; Save Tile &gt; Binary)<BR>You have 2 =
+assembler=20
+file which include a binary and all the def needed Join the 2 in an only =
+one=20
+swimmer.s=20
+<P><B><FONT size=3D4>4/ Hints</FONT></B></P>Rename the assembler file in =
+.ASM to=20
+make a difference between a JAS file (.s) and a Maccer filer =
+(.asm)<BR>Write the=20
+exact size of the compressed tile files (look at properties of the =
+file), it's=20
+needed for the uncompress function=20
+<P><B><FONT size=3D4>5/ Final words</FONT></B></P>
+<P>The source of the demo is commented so i think you'll =
+understand<BR>Share all=20
+you make! if not public, at least email me a private url to download =
+your=20
+work!<BR>I can be reached at <A=20
+href=3D"http://www.consoledev.fr.st/">http://www.consoledev.fr.st/</A><BR=
+></P>
+<P><I>Kaneda (c)Aug 2003</I></P></BODY></HTML>
+
+------=_NextPart_000_0000_01C3680F.46889460
+Content-Type: image/gif
+Content-Transfer-Encoding: base64
+Content-Location: file:///E:/Dev_c/sega/bmp2Tile_ex/_doc/back.gif
+
+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
+O1YnpsBDFgEAOw==
+
+------=_NextPart_000_0000_01C3680F.46889460
+Content-Type: image/gif
+Content-Transfer-Encoding: base64
+Content-Location: file:///E:/Dev_c/sega/bmp2Tile_ex/_doc/tree.gif
+
+R0lGODlhVAAaALMAAAQCBKRiBIRCBEQCBOSiRKSCBGQCBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAACH5BAAAAAAALAAAAABUABoAAwT/EMhJq5Uk3837DSAoeGSXnWVKhqDqTsGpvTQQGkb9BsI5
+0KCfKpijsAK6T2ggHC5TNyMIl9yACgHmbtnk3Ki2YHUjCGCZXag5mz4ui5Lp2LpG11jaUGGPZYGj
+JTJugwICBYVMOIoDg42Oem9FgB4ZZpVXfHwih2gDi5pZBoOZmXp7ZplleHAcGQWulYWFPEeITAJM
+Io9ls6qjhyKzX6ytryfGssm9bAO9yrw8zs+qfSyHyaGexBeVghnJpHzgsuGkhtfT56nTWhaFFbAy
+yOmF6/T3+MkGsp23IwDNLBAwtieeMhz5CiGUtU/hwYYOFTZsljDZhIEYMRrThmihJ4kCoBYq4hdS
+kUiEOJqlbHiSXz+K7wAQiEEwo8mbJrVpW2lgZ86fPXHyXLToRztur4zFmJnBp1OhPm9GjQqUaE47
+JJIesxlUqFecVL+GhYrrqIelGpv23OnUU9uViYauhcv2qklZKrZuRDM3aCe6L93qXBu4r2C+fBWl
+YLq3sOPAjyH3IyzZ5OLGkjNr3swZcSJPJTB3Hk26dNQ5qFOrXs2aQwQAOw==
+
+------=_NextPart_000_0000_01C3680F.46889460
+Content-Type: image/gif
+Content-Transfer-Encoding: base64
+Content-Location: file:///E:/Dev_c/sega/bmp2Tile_ex/_doc/swimmer0.gif
+
+R0lGODlhEQAcALMAAAQCBATCBATCxARiBOSCBORCBOTCBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAACH5BAAAAAAALAAAAAARABwAAwSCEMhZqpg4130z3pbQeRJYjKR5FmQJClVrzFYxG949wzqB
+6cDeZEYIGopHyQ0JRBJ8y+BzCSBWic/nFXocDAwB79NrPQq8g0A4jU4e1Wn4mgwFrMFhsFfik+T1
+M2F9GF9dWV+DP1FUOVhYiYpHjCSLSS1bVpdVU1qaRJmeRZAtWaMAEQA7
+
+------=_NextPart_000_0000_01C3680F.46889460
+Content-Type: image/gif
+Content-Transfer-Encoding: base64
+Content-Location: file:///E:/Dev_c/sega/bmp2Tile_ex/_doc/swimmer1.gif
+
+R0lGODlhDgAZALMAAAQCBATCBATCxARiBOSCBORCBOTCBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAACH5BAAAAAAALAAAAAAOABkAAwRpEEhgiKwzG0z53EQhCqAWiiNhfSgqFGtntALJbe1Y3DP9
+8rhCbQPcDIkxopKoWSIzMmXss1RBO6rsFDAYGAJdVTcDHgTK5cnZvC57Kesv+Nut0DfzO9Erzg5U
+ThsXUlErSFuCFFtUgxkRADs=
+
+------=_NextPart_000_0000_01C3680F.46889460--
