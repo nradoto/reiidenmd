@@ -2,8 +2,6 @@
 
 #include "resources.h"
 
-static void joyEvent(u16 joy, u16 changed, u16 state);
-
 fix32 movx;
 fix32 movy;
 s16 xpos = 0;
@@ -11,6 +9,28 @@ s16 ypos = 18;
 s16 yorder;
 s16 xorder;
 uint8_t cursor = 0;
+uint8_t options = 0;
+
+void mainmenu()
+{
+		if (options==0)
+		{
+		//VDP_drawText("Highly responsive to prayers", 5, 6);
+			VDP_clearTextArea(15, 18, 10, 7);
+			VDP_clearTextArea(15, 18, 10, 7);
+					VDP_drawText(">", 14, ypos);
+					VDP_drawText("Start", 15, 18);
+					VDP_drawText("Continue", 15, 19);
+					VDP_drawText("Options",15,20);
+					VDP_drawText("Exit",15,21);
+					VDP_drawText("1995 ZUNSoft, 2017 Spaztron64", 5, 26);
+					if (ypos>21 && options == 0)
+					{
+						ypos=ypos-1;
+					}
+
+		}
+}
 
 void myJoyHandler( u16 joy, u16 changed, u16 state)
 {
@@ -19,6 +39,28 @@ void myJoyHandler( u16 joy, u16 changed, u16 state)
 		if (state & BUTTON_START)
 		{
 			VDP_drawText("player 1 pressed START button ", 0, 0);
+			if (ypos==20)
+			{
+						options=1;
+							VDP_clearTextArea(15, 18, 10, 7);
+							VDP_clearTextArea(15, 18, 10, 7);
+								VDP_drawText(">", 14, ypos);
+								VDP_drawText("Rank", 15, 18);
+								VDP_drawText("Music", 15, 19);
+								VDP_drawText("Lives",15,20);
+								VDP_drawText("Sound Test",15,21);
+								VDP_drawText("Quit",15,22);
+								if (ypos<18)
+								{
+									ypos=ypos+1;
+								}
+								if (ypos>22 && options == 1)
+								{
+									ypos=ypos-1;
+								}
+			}
+			if (ypos==22 && options==1)
+			mainmenu();
 		}
 		else if (changed & BUTTON_START)
 		{
@@ -31,24 +73,22 @@ void myJoyHandler( u16 joy, u16 changed, u16 state)
 
 		}
 		else if (changed & BUTTON_DOWN)
-		{VDP_clearText(12, ypos-1, 5);
-		VDP_clearText(12, ypos+1, 5);}
+		{VDP_clearText(12, ypos-1, 3);
+		VDP_clearText(12, ypos+1, 3);}
 		if (state & BUTTON_UP)
 		{
 			VDP_drawText(">", 14, ypos-1);
 			ypos=ypos-1;
 		}
 			else if (changed & BUTTON_UP)
-			{VDP_clearText(12, ypos+1, 5);
-			VDP_clearText(12, ypos-1, 5);}
+			{VDP_clearText(12, ypos+1, 3);
+			VDP_clearText(12, ypos-1, 3);}
 		}
-
+}
 //	if (joy != JOY_1)
 //		{
 //			VDP_drawText(">", 14, ypos);
 //		}
-}
-
 void screen()
 {//read input
 		//move sprite
@@ -58,18 +98,6 @@ void screen()
 
 }
 
-static void handleInput()
-		{
-		    u16 value = JOY_readJoypad(JOY_1);
-
-		    if (value & BUTTON_UP) yorder = -1;
-		    else if (value & BUTTON_DOWN) yorder = +1;
-		    else yorder = 0;
-
-		    if (value & BUTTON_LEFT) xorder = -1;
-		    else if (value & BUTTON_RIGHT) xorder = +1;
-		    else xorder = 0;
-		}
 int main()
 {
 	JOY_init();
@@ -78,26 +106,18 @@ int main()
 
 	while(1)
 	{
-		//VDP_drawText("Highly responsive to prayers", 5, 6);
-					VDP_drawText(">", 14, ypos);
-					VDP_drawText("Start", 15, 18);
-					VDP_drawText("Continue", 15, 19);
-					VDP_drawText("Options",15,20);
-					VDP_drawText("Exit",15,21);
-					VDP_drawText("1995 ZUNSoft, 2017 Spaztron64", 5, 26);
-					if (ypos<18)
-					{
-						ypos=ypos+1;
-					}
-					if (ypos>21)
-					{
-						ypos=ypos-1;
-					}
-
+		if (ypos<18)
+							{
+								ypos=ypos+1;
+							}
+							if (ypos>22 && options == 1)
+							{
+								ypos=ypos-1;
+							}
+						mainmenu();
 
 		//wait for screen refresh
 		VDP_waitVSync();
 	}
-	if (cursor == 0) VDP_drawText(">",14,18);
 }
 
